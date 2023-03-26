@@ -14,7 +14,7 @@ app.get('/', (req, res)=>{
     console.log("db connected sucessfully");
     let user = await User.create({
         email: "sri@example.com",
-        password: "123",
+        password: "123456",
         username: "sri"
     })
 
