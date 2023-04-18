@@ -1,8 +1,7 @@
 const passport = require('passport');
-const JwtStrategy = require('passport-jwt/lib/strategy');
-const JWTStrategy = require('passport-jwt').Strategy;
 const localStrategy = require('passport-local').Strategy;
-
+const JWTStrategy = require('passport-jwt').Strategy;
+const extractJWT = require('passport-jwt').ExtractJwt;
 const User = require('../models/user');
 
 
@@ -46,7 +45,7 @@ async (email, password, done)=>{
 passport.use(new JWTStrategy(
     {
         secretOrKey: 'SECRET',
-        jwtFromRequest: ExtractJWT.fromUrlQueryParameter('secret_token')
+        jwtFromRequest: extractJWT.fromUrlQueryParameter('secret_token')
     },
     async (token, done)=>{
         try {
@@ -54,6 +53,22 @@ passport.use(new JWTStrategy(
         }catch(error){
             console.log(error);
             done(error)
+        }
+    }
+))
+
+passport.use(new JWTStrategy(
+    {
+        secretOrKey: 'TOP_SECRET',
+        jwtFromRequest: extractJWT.fromUrlQueryParameter('secret_token')
+    },
+    async (token, done) =>{
+        try{
+            return done()
+        }catch(err){
+            console.log(err);
+            done(err)
+
         }
     }
 ))
