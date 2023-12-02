@@ -4,14 +4,17 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-    "scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "GK",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "morgan": "^1.10.0",
+    "mongoose": "^8.0.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
     "nodemon": "^3.0.1"
   }
 }
